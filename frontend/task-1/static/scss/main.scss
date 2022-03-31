@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Ubuntu:wght@400;700&display=swap');
+
+@mixin breakpoint($size) {
+    @if $size == sm {
+      @media (max-width: 320px) { @content; }
+    } @else if $size == md {
+      @media (min-width: 480px) { @content; }
+    } @else if $size == lg {
+      @media (min-width: 768px) { @content; }
+    } @else if $size == xl {
+      @media (min-width: 1024px) { @content; }
+    } @else if $size == xxl {
+      @media (min-width: 1920px) { @content; }
+    }
+  }
+
+$main-gray: #57606F;
+$font-gray: #747D8C;
+$light-gray-1: #A4B0BE;
+$light-gray-2: #CED6E0;
+$light-gray-3: #F9F8F6;
+$brown: #946B2D;
+$dark-red: #740001;
+$dark-blue: #2F3542;
+$white: #FFFFFF;
+
+html, body {
+    background: $light-gray-3;
+    width: 100%;
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.main-block {
+    &__container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        max-width: 883px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        margin-top: 1.9em;
+        font-size: 2.5rem;
+        text-align: center;
+        letter-spacing: 0.1rem;
+        color: $main-gray;
+        margin-bottom: 0;
+    }
+
+    &__sub-title {
+        text-align: center;
+        margin-top: 1em;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        font-family: 'Ubuntu', serif;
+        font-weight: 300;
+        color: $main-gray;
+        margin-bottom: 0;
+    }
+
+    &__result-text {
+        margin-top: 3em;
+        font-size: 0.65rem;
+        color: $light-gray-1;
+        margin-bottom: 0.3em;
+    }
+}
+
+.inputs-block {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 1.4em;
+
+    @include breakpoint(md) {
+        -ms-grid-columns: 4fr 3fr 3fr 1fr 1fr;
+        grid-template-columns: 4fr 3fr 3fr 1fr 1fr;
+    }
+
+    input, select, button {
+        font-family: 'Ubuntu', sans-serif;
+        border: 0.5px solid $light-gray-2;
+        border-radius: 8px;
+        color: $font-gray;
+        font-size: 0.62rem;
+    }
+
+    &__search-button, &__clear-button {
+        -ms-grid-row: 3;
+        grid-row: 3;
+        margin-top: 1em;
+        max-height: 4em;
+
+        @include breakpoint(md) {
+            -ms-grid-row: 1;
+            grid-row: 1;
+            margin-top: 0;
+            max-width: none;
+        }
+
+        img {
+            width: 50%;
+            height: 55%;
+        }
+    }
+
+    &__search-button {
+        background-color: $brown;
+        -ms-grid-column: 2;
+        grid-column: 2;
+
+        @include breakpoint(md) {
+            -ms-grid-column: 4;
+            grid-column: 4;
+            margin-left: 0.8em;
+            margin-right: -0.65em;
+        }
+    }
+
+    &__clear-button {
+        background-color: $light-gray-2;
+        margin-left: 0.2em;
+        -ms-grid-column: 3;
+        grid-column: 3;
+
+        @include breakpoint(md) {
+            -ms-grid-column: 5;
+            grid-column: 5;
+            margin-left: 0.8em;
+        }
+    }
+
+    input {
+        padding: 1em 1em 1em 1.5em;
+        border: 1px solid $light-gray-2;
+        border-radius: 5px;
+        grid-column: 1 / -1;
+
+        @include breakpoint(md) {
+            -ms-grid-column: 1;
+            grid-column: 1;
+        }
+    }
+
+    select {
+        padding: 1em;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        background: url('../img/triangle.svg') no-repeat 94% 50%;
+        outline: 0;
+        background-color: $white;
+        background-size: 0.8em;
+        margin-top: 0.5em;
+
+        @include breakpoint(md) {
+            margin-left: 0.8em;
+            margin-top: 0;
+        }
+    }
+
+    &__select-faculty {
+        -ms-grid-column: 2;
+        grid-column: 2;
+        -ms-grid-row: 2;
+        grid-row: 2;
+        -ms-grid-column-span: 2;
+        grid-column: 1/3;
+
+        @include breakpoint(md) {
+            -ms-grid-column: 3;
+            grid-column: 3;
+            -ms-grid-row: 1;
+            grid-row: 1;
+        }
+    }
+
+    &__select-houses {
+        -ms-grid-column: 1;
+        grid-column: 1;
+        -ms-grid-row: 2;
+        grid-row: 2;
+        -ms-grid-column-span: -3;
+        grid-column: 6/3;
+
+        @include breakpoint(md) {
+            -ms-grid-column: 2;
+            grid-column: 2;
+            -ms-grid-row: 1;
+            grid-row: 1;
+        }
+    }
+}
+
+.tiles-block {
+    margin-left: -5px;
+    margin-right: -5px;
+
+    &__container {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+
+        @include breakpoint(md) {
+            -ms-grid-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include breakpoint(lg) {
+            -ms-grid-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include breakpoint(xl) {
+            -ms-grid-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    &__img {
+        width: 6em;
+        height: 6em;
+        border-radius: 50%;
+        background: url('../img/hermiona.webp') no-repeat 0 0;
+        background-size: auto 6em;
+        margin-top: 1.3em;
+    }
+
+    &__card {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        background-color: $white;
+        margin: 0.35em;
+        border-radius: 15px;
+    }
+
+    &__name, &__faculty, &__birthday {
+        margin: 0;
+    }
+
+    &__name {
+        font-size: 0.85rem;
+        margin-top: 0.5em;
+        color: $dark-blue;
+    }
+
+    &__birthday-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        &__birthday {
+            margin: 0.7em 0 1.8em 0.7em;
+            font-weight: 100;
+            font-size: 0.6rem;
+            color: $main-gray;
+        }
+
+        &__birthday-cake-img {
+            width: 14px;
+            height: 22px;
+        }
+    }
+
+    &__faculty-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 0.6em;
+
+        &__red-square {
+            border: 1px $dark-red solid;
+            height: 9px;
+            width: 9px;
+            background-color: $dark-red;
+            border-radius: 3px;
+        }
+
+        &__faculty {
+            margin: 0 0 0 0.8em;
+            font-weight: 100;
+            font-size: 0.6rem;
+            color: $main-gray;
+        }
+    }
+}
+
